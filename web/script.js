@@ -1,8 +1,17 @@
 // Onclick of the button
-document.querySelector("button").onclick = function () {  
-    // Call python's random_python function
-    eel.random_python()(function(number){                      
-      // Update the div with a random number returned by python
-      document.querySelector(".random_number").innerHTML = number;
-    })
-  }
+
+
+function retificadorEmPonte(){
+  var voltagem1 = 220;
+  var frequencia1 = 60;
+  var capacitor = 0.0001;
+  var resistencia = 1000;
+  var N1 = 18000;
+  var N2 = 1200;
+  diodos = 0.7;
+  eel.retificadorEmPonte()(function(voltagem1, frequencia1, capacitor, resistencia, N1, N2, diodos){})
+}
+
+$("button").click(function(){
+  retificadorEmPonte();
+});
