@@ -1,3 +1,79 @@
+// variáveis
+
+let voltagem1;
+let frequencia1;
+let diodo;
+
+// cálculos gerais
+
+function voltagemSecundario() {
+    return Math.round((voltagem1 * N2) / N1, 2)
+}
+
+function pico() {
+    return Math.round(voltagemSecundario() * (Math.sqrt(2)), 2)
+}
+
+
+//Circuito com retificador em ponte
+
+let capacitor = parseFloat(0.0001)
+let resistencia = parseFloat(1000)
+let N1 = parseFloat(1000)
+let N2 = parseFloat(200)
+
+
+function VRLP() {
+    return Math.round(pico() - (2 * diodos), 2)
+}
+function corrente() {
+    return Math.round(VRLP() / resistencia, 2)
+}
+function ripple() {
+    return Math.round(corrente() / (capacitor * (2 * frequencia1)), 2)
+}
+function tensaoMedia() {
+    return Math.round((VRLP() - ripple()), 2)
+}
+function eficaz() {
+    return Math.round(VRLP() / Math.sqrt(2), 2)
+}
+
+console.log("Tensão eficaz no V2 = ", voltagemSecundario())
+console.log("Tensão de pico do V2 = ", vp())
+console.log("Tensão de pico na carga = ", VRLP())
+console.log("Tensão média na carga = ", tensaoMedia())
+console.log("Tensão eficaz na carga = ", eficaz())
+console.log("Tensão de pico no capacitor = ", VRLP())
+console.log("Corrente = ", corrente())
+console.log("Tensão de Ripple = ", ripple())
+
+function RetificadorEmPonte(){
+    //jquery atribuindo todos os retornos em cada span
+}
+
+//Circuito com retificador de meia onda
+
+function VPR() {
+    return Math.round(pico() - diodo, 2)
+}
+function VRm() {
+    return Math.round(VPR() * 0.318, 2)
+}
+function VRe() {
+    return Math.round(VPR() / (Math.sqrt(2)), 2)
+}
+
+console.log("Tensão eficaz no V2 = ", voltSecudario())
+console.log("Tensão de pico no secundário = ", pico())
+console.log("Tensão de pico no resistor = ", VPR())
+console.log("Tensão méida no resistor = ", VRm())
+console.log("Tensão eficaz no resistor = ", VRe())
+
+function RetificadorMeiaOnda(){
+    //jquery atribuindo os retornos em cada span
+}
+
 //Sistema com 6 resistores
 
 let R1 = 30
@@ -18,14 +94,14 @@ let malha_um_i1 = R2 + R1 + R5 + R6
 // 2 - todos que multiplicam i2
 let malha_um_i2 = R6
 //junção da parte 1 e parte 2 da equação 1 + a voltagem envolvida (volt1)
-let equacao_i1 = [malha_um_i1, malha_um_i2, volt1]
+let equacao_i1 = [malha_um_i1, malha_um_i2, voltagem1]
 // 1 - todas que multiplicam i1 
 let malha_dois_i1 = R6
 // 2 - todos que multiplicam i2
 let malha_dois_i2 = R4 + R6 + R3
 
 //junção da parte 1 e parte 2 da equação 2 + a voltagem envolvida (volt1)
-let equacao_i2 = [malha_dois_i1, malha_dois_i2, volt2]
+let equacao_i2 = [malha_dois_i1, malha_dois_i2, voltagem2]
 
 
 function calcular_i1() { //calculando i1
