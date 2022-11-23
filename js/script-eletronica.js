@@ -76,12 +76,12 @@ function RetificadorMeiaOnda(){
 
 //Sistema com 6 resistores
 
-let R1 = 30
-let R2 = 20
-let R3 = 25
-let R4 = 50
-let R5 = 10
-let R6 = 40
+let R1 = 10
+let R2 = 40
+let R3 = 20
+let R4 = 30
+let R5 = 50
+let R6 = 25
 let volt1 = 200
 let volt2 = 50
 
@@ -90,15 +90,15 @@ let soma_equacoes = []
 
 //todas as variáveis envolvidas na primeira equação do sistema
 // 1 - todas que multiplicam i1
-let malha_um_i1 = R2 + R1 + R5 + R6
+let malha_um_i1 = R1 + R4 + R3 + R2
 // 2 - todos que multiplicam i2
-let malha_um_i2 = R6
+let malha_um_i2 = R2
 //junção da parte 1 e parte 2 da equação 1 + a voltagem envolvida (volt1)
 let equacao_i1 = [malha_um_i1, malha_um_i2, voltagem1]
 // 1 - todas que multiplicam i1 
-let malha_dois_i1 = R6
+let malha_dois_i1 = R2
 // 2 - todos que multiplicam i2
-let malha_dois_i2 = R4 + R6 + R3
+let malha_dois_i2 = R5 + R6 + R2
 
 //junção da parte 1 e parte 2 da equação 2 + a voltagem envolvida (volt1)
 let equacao_i2 = [malha_dois_i1, malha_dois_i2, voltagem2]
@@ -129,42 +129,42 @@ function calcular_i1() { //calculando i1
     //soma = equacao_i1[i] + equacao_i2[i]
     //soma_equacoes.insert(len(soma_equacoes), soma)
 
-    return soma_equacoes[2] / soma_equacoes[0] //resultado de i1 após o corte de i2
+    return (soma_equacoes[2] / soma_equacoes[0]) //resultado de i1 após o corte de i2
 }
 
-function calcular_i2(i1) { //aplicando o resultado de i1 para descobrir i2
-    return ((equacao_i1[2] - (equacao_i1[0] * i1)) / equacao_i1[1])
+function calcular_i2(valor) { //aplicando o resultado de i1 para descobrir i2
+    return ((equacao_i1[2] - (equacao_i1[0] * valor)) / equacao_i1[1])
 }
 
-let i1 = calcular_i1().toFixed(2)
-let i2 = calcular_i2(i1).toFixed(2)
-let i3 = (i1 + i2).toFixed(2)
+let i1 = calcular_i1()
+let i2 = calcular_i2(i1)
+let i3 = i1+i2
 
 
 //apresentação do resultado das correntes
-console.log("i1 = ", i1.toFixed(2), "A")
-console.log("i2 = ", i2.toFixed(2), "A")
-console.log("i3 = ", (i1 + i2).toFixed(2), "A")
+console.log("i1 = ", i1.toFixed(2) +"A")
+console.log("i2 = ", i2.toFixed(2) + "A")
+console.log("i3 = ", i3.toFixed(2) + "A")
 
 //corrente em cada resistor
-console.log("Corrente no R1 = ", i1.toFixed(2), "A")
-console.log("Corrente no R2 = ", i1.toFixed(2), "A")
-console.log("Corrente no R3 = ", i2.toFixed(2), "A")
-console.log("Corrente no R4 = ", i2.toFixed(2), "A")
-console.log("Corrente no R5 = ", i1.toFixed(2), "A")
-console.log("Corrente no R6 = ", i3.toFixed(2), "A")
+console.log("Corrente no R1 = ", i1.toFixed(2)+ "A")
+console.log("Corrente no R2 = ", i3.toFixed(2) + "A")
+console.log("Corrente no R3 = ", i1.toFixed(2) + "A")
+console.log("Corrente no R4 = ", i1.toFixed(2) + "A")
+console.log("Corrente no R5 = ", i2.toFixed(2) + "A")
+console.log("Corrente no R6 = ", i2.toFixed(2) + "A")
 
 // potência em cada resistor
-// P = U.I^2
-console.log("Potência no R1 = ", (R1 * (i1 * i1), "J"))
-console.log("Potência no R2 = ", (R2 * (i1 * i1)).toFixed(2), "J")
-console.log("Potência no R3 = ", (R3 * (i2 * i2)).toFixed(2), "J")
-console.log("Potência no R4 = ", (R4 * (i2 * i2)).toFixed(2), "J")
-console.log("Potência no R5 = ", (R5 * (i1 * i1)).toFixed(2), "J")
-console.log("Potência no R6 = ", (R6 * ((i1 + i2) * (i1 + i2))).toFixed(2), "J")
+// P = R.I^2
+console.log("Potência no R1 = ", (R1 * (i1 * i1)).toFixed(2) + "W")
+console.log("Potência no R2 = ", (R2 * (i3 * i3)).toFixed(2)+ "W")
+console.log("Potência no R3 = ", (R3 * (i1 * i1)).toFixed(2)+ "W")
+console.log("Potência no R4 = ", (R4 * (i1 * i1)).toFixed(2)+ "W")
+console.log("Potência no R5 = ", (R5 * (i2 * i2)).toFixed(2)+ "W")
+console.log("Potência no R6 = ", (R6 * (i2 * i2)).toFixed(2)+ "W")
 
 // potência nos geradores
-// P = U*I^2 ???? (necessário confirmar)
+// P = U*I 
 console.log("")
-console.log("Potência no gerador 1 = ", (volt1 * (i1 * i1)).toFixed(2), "J")
-console.log("Potência no gerador 2 = ", (volt2 * (i2 * i2)).toFixed(2), "J")
+console.log("Potência no gerador 1 (E1) = ", (volt1 * (i1 * i1)).toFixed(2)+ "W")
+console.log("Potência no gerador 2 (E2) = ", (volt2 * (i2 * i2)).toFixed(2)+ "W")
