@@ -1,10 +1,10 @@
-var select = document.getElementById("selectCalculo");
+var selectCalculo = document.getElementById("selectCalculo");
 var imgRetificadorPonte = document.getElementById("imgPonte");
 var imgRetificadorMeiaOnda = document.getElementById("imgMeiaOnda");
 var imgRetificadorOndaCompleta = document.getElementById("imgOndaCompleta");
 var imgRetificadorSeisResistores = document.getElementById("imgSeisResistores");
 
-select.addEventListener("change", function () {
+selectCalculo.addEventListener("change", function () {
     var calculo = this.options[this.selectedIndex].value;
     if (calculo == "RetificadorPonte") {
         imgRetificadorMeiaOnda.style.display = "none";
