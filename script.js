@@ -3,6 +3,7 @@ var imgRetificadorPonte = document.getElementById("imgPonte");
 var imgRetificadorMeiaOnda = document.getElementById("imgMeiaOnda");
 var imgRetificadorOndaCompleta = document.getElementById("imgOndaCompleta");
 var imgRetificadorSeisResistores = document.getElementById("imgSeisResistores");
+var divPortaLogica = document.getElementById("divPortaLogica")
 
 selectCalculo.addEventListener("change", function () {
     var calculo = this.options[this.selectedIndex].value;
@@ -32,7 +33,7 @@ let R6 = 25
 let volt1 = 200
 let volt2 = 50
 
-select.addEventListener("change", function () {
+selectCalculo.addEventListener("change", function () {
     divPortaLogica.className = this.options[this.selectedIndex].value;
 
     if (divPortaLogica.className == "portaNot") {
@@ -108,7 +109,7 @@ function picoCapacitorMeiaOnda() {
     return picoSecundario() - diodo
 }
 function rippleMeiaOnda() {
-    return ((picoCapacitor()/resistencia) / (capacitor * frequencia)).toFixed(2)
+    return ((picoCapacitorMeiaOnda()/resistencia) / (capacitor * frequencia1)).toFixed(2)
 }
 function tensaoMediaMeiaOnda() {
     return ((picoCapacitorMeiaOnda()+(picoCapacitorMeiaOnda()-rippleMeiaOnda()))/2).toFixed(2)
