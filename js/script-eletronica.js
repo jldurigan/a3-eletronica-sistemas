@@ -1,3 +1,18 @@
+var select = document.getElementById("selectCalculo");
+var imgRetificadorPonte = document.getElementById("imgPonte");
+var imgRetificadorMeiaOnda = document.getElementById("imgMeiaOnda");
+var imgRetificadorOndaCompleta = document.getElementById("imgOndaCompleta");
+var imgRetificadorSeisResistores = document.getElementById("imgSeisResistores");
+
+select.addEventListener("change", function () {
+    var calculo = this.options[this.selectedIndex].value;
+    if (calculo == "RetificadorPonte") {
+        imgRetificadorMeiaOnda.style.display = "none";
+        imgRetificadorOndaCompleta.style.display = "none";
+        imgRetificadorSeisResistores.style.display = "none";
+    }
+})
+
 // variáveis
 
 let voltagem1;
@@ -8,9 +23,45 @@ let resistencia
 let N1
 let N2
 
+let R1 = 10
+let R2 = 40
+let R3 = 20
+let R4 = 30
+let R5 = 50
+let R6 = 25
+let volt1 = 200
+let volt2 = 50
+
 select.addEventListener("change", function () {
     divPortaLogica.className = this.options[this.selectedIndex].value;
-})
+
+    if (divPortaLogica.className == "portaNot") {
+
+
+    }
+    if (divPortaLogica.className == "portaAnd") {
+
+    }
+    if (divPortaLogica.className == "portaNand") {
+
+    }
+    if (divPortaLogica.className == "portaOr") {
+
+    }
+    if (divPortaLogica.className == "portaNor") {
+
+    }
+    if (divPortaLogica.className == "portaXor") {
+
+    }
+    if (divPortaLogica.className == "portaNxor") {
+    
+    }
+    if (divPortaLogica.className == "default") {
+
+    }
+});
+
 
 
 // cálculos gerais
@@ -93,15 +144,6 @@ console.log("Tensão de Ripple = ", rippleCenterTape()+"v")
 console.log("Tensão média na carga = ", tensaoMediaCenterTape()+"v")
 
 //Sistema com 6 resistores
-
-let R1 = 10
-let R2 = 40
-let R3 = 20
-let R4 = 30
-let R5 = 50
-let R6 = 25
-let volt1 = 200
-let volt2 = 50
 
 //array para os cálculos
 let soma_equacoes = []

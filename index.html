@@ -32,18 +32,20 @@
     crossorigin="anonymous"></script>
 
   <div>
-    <select class="form-select" aria-label="Selecione o circuito a ser calculado">
-      <option selected>Selecione o circuito a ser calculado</option>
-      <option value="1">Circuito com retificador em ponte</option>
-      <option value="1">Circuito com retificador de onda completa com center tape</option>
-      <option value="2">Circuito com retificador de meia onda</option>
-      <option value="3">Sistema com 6 resistores</option>
+    <select id="selectCalculo" class="form-select" aria-label="Default select example">
+      <option value="default">Selecione o circuito a ser calculado</option>
+      <option value="RetificadorPonte">Circuito com retificador em ponte</option>
+      <option value="RetificadorOndaCompleta">Circuito com retificador de onda completa com center tape</option>
+      <option value="RetificadorMeiaOnda">Circuito com retificador de meia onda</option>
+      <option value="RetificadorSeisResistores">Sistema com 6 resistores</option>
     </select>
   </div>
+
   <div id="divImagens">
-    <!-- imagens dos circuitos -->
     <img id="imgResistores" src="/img/resistores.png">
-    <img id="imgPonte" src="/img/ponte.png">
+    <img id="imgPonte" src="/img/retificador-ponte.png">
+    <img id="imgMeiaOnda" src="/img/retificador-meia-onda.png">
+    <img id="imgOndaCompleta" src="/img/retificador-onda-completa-center-tape.png">
   </div>
 </body>
 
