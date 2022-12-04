@@ -84,52 +84,52 @@ botao.addEventListener("click", function (event) {
     var resPotenciaGerador2 = document.getElementById("PotenciaGerador2")
 
     //Atricuição de respostas
-    resI1.textContent = "i1 = " + i1.toFixed(2) + "A";
-    resI2.textContent = "i2 = " + i2.toFixed(2) + "A";
-    resI3.textContent = "i3 = " + i3.toFixed(2) + "A";
-    resCorrenteR1.textContent = "Corrente no R1 = " + i1.toFixed(2) + "A";
-    resCorrenteR2.textContent = "Corrente no R2 = " + i3.toFixed(2) + "A";
-    resCorrenteR3.textContent = "Corrente no R3 = " + i1.toFixed(2) + "A";
-    resCorrenteR4.textContent = "Corrente no R4 = " + i1.toFixed(2) + "A";
-    resCorrenteR5.textContent = "Corrente no R5 = " + i2.toFixed(2) + "A";
-    resCorrenteR6.textContent = "Corrente no R6 = " + i2.toFixed(2) + "A";
-    resPotenciaR1.textContent = "Potência no R1 = " + (R1 * (i1 * i1)).toFixed(2) + "W";
-    resPotenciaR2.textContent = "Potência no R2 = " + (R2 * (i3 * i3)).toFixed(2) + "W";
-    resPotenciaR3.textContent = "Potência no R3 = " + (R3 * (i1 * i1)).toFixed(2) + "W";
-    resPotenciaR4.textContent = "Potência no R4 = " + (R4 * (i1 * i1)).toFixed(2) + "W";
-    resPotenciaR5.textContent = "Potência no R5 = " + (R5 * (i2 * i2)).toFixed(2) + "W";
-    resPotenciaR6.textContent = "Potência no R6 = " + (R6 * (i2 * i2)).toFixed(2) + "W";
-    resPotenciaGerador1.textContent = "Potência no gerador 1 = " + (volt1 * (i1 * i1)).toFixed(2) + "W";
-    resPotenciaGerador2.textContent = "Potência no gerador 2 = " + (volt2 * (i2 * i2)).toFixed(2) + "W";
+    resI1.textContent = "Corrente i1 = " + i1.toFixed(2).replace(".", ",") + "A";
+    resI2.textContent = "Corrente i2 = " + i2.toFixed(2).replace(".", ",") + "A";
+    resI3.textContent = "Corrente i3 = " + i3.toFixed(2).replace(".", ",") + "A";
+    resCorrenteR1.textContent = "Corrente no R1 = " + i1.toFixed(2).replace(".", ",") + "A";
+    resCorrenteR2.textContent = "Corrente no R2 = " + i3.toFixed(2).replace(".", ",") + "A";
+    resCorrenteR3.textContent = "Corrente no R3 = " + i1.toFixed(2).replace(".", ",") + "A";
+    resCorrenteR4.textContent = "Corrente no R4 = " + i1.toFixed(2).replace(".", ",") + "A";
+    resCorrenteR5.textContent = "Corrente no R5 = " + i2.toFixed(2).replace(".", ",") + "A";
+    resCorrenteR6.textContent = "Corrente no R6 = " + i2.toFixed(2).replace(".", ",") + "A";
+    resPotenciaR1.textContent = "Potência no R1 = " + (R1 * (i1 * i1)).toFixed(2).replace(".", ",") + "W";
+    resPotenciaR2.textContent = "Potência no R2 = " + (R2 * (i3 * i3)).toFixed(2).replace(".", ",") + "W";
+    resPotenciaR3.textContent = "Potência no R3 = " + (R3 * (i1 * i1)).toFixed(2).replace(".", ",") + "W";
+    resPotenciaR4.textContent = "Potência no R4 = " + (R4 * (i1 * i1)).toFixed(2).replace(".", ",") + "W";
+    resPotenciaR5.textContent = "Potência no R5 = " + (R5 * (i2 * i2)).toFixed(2).replace(".", ",") + "W";
+    resPotenciaR6.textContent = "Potência no R6 = " + (R6 * (i2 * i2)).toFixed(2).replace(".", ",") + "W";
+    resPotenciaGerador1.textContent = "Potência no gerador 1 = " + (volt1 * (i1 * i1)).toFixed(2).replace(".", ",") + "W";
+    resPotenciaGerador2.textContent = "Potência no gerador 2 = " + (volt2 * (i2 * i2)).toFixed(2).replace(".", ",") + "W";
 
 })
 
 /*
 //apresentação do resultado das correntes
-console.log("i1 = ", i1.toFixed(2) + "A")
-console.log("i2 = ", i2.toFixed(2) + "A")
-console.log("i3 = ", i3.toFixed(2) + "A")
+console.log("i1 = ", i1.toFixed(2).replace(".", ",") + "A")
+console.log("i2 = ", i2.toFixed(2).replace(".", ",") + "A")
+console.log("i3 = ", i3.toFixed(2).replace(".", ",") + "A")
 
 //corrente em cada resistor
-console.log("Corrente no R1 = ", i1.toFixed(2) + "A")
-console.log("Corrente no R2 = ", i3.toFixed(2) + "A")
-console.log("Corrente no R3 = ", i1.toFixed(2) + "A")
-console.log("Corrente no R4 = ", i1.toFixed(2) + "A")
-console.log("Corrente no R5 = ", i2.toFixed(2) + "A")
-console.log("Corrente no R6 = ", i2.toFixed(2) + "A")
+console.log("Corrente no R1 = ", i1.toFixed(2).replace(".", ",") + "A")
+console.log("Corrente no R2 = ", i3.toFixed(2).replace(".", ",") + "A")
+console.log("Corrente no R3 = ", i1.toFixed(2).replace(".", ",") + "A")
+console.log("Corrente no R4 = ", i1.toFixed(2).replace(".", ",") + "A")
+console.log("Corrente no R5 = ", i2.toFixed(2).replace(".", ",") + "A")
+console.log("Corrente no R6 = ", i2.toFixed(2).replace(".", ",") + "A")
 
 // potência em cada resistor
 // P = U.I^2
-console.log("Potência no R1 = ", (R1 * (i1 * i1)).toFixed(2) + "W")
-console.log("Potência no R2 = ", (R2 * (i3 * i3)).toFixed(2) + "W")
-console.log("Potência no R3 = ", (R3 * (i1 * i1)).toFixed(2) + "W")
-console.log("Potência no R4 = ", (R4 * (i1 * i1)).toFixed(2) + "W")
-console.log("Potência no R5 = ", (R5 * (i2 * i2)).toFixed(2) + "W")
-console.log("Potência no R6 = ", (R6 * (i2 * i2)).toFixed(2) + "W")
+console.log("Potência no R1 = ", (R1 * (i1 * i1)).toFixed(2).replace(".", ",") + "W")
+console.log("Potência no R2 = ", (R2 * (i3 * i3)).toFixed(2).replace(".", ",") + "W")
+console.log("Potência no R3 = ", (R3 * (i1 * i1)).toFixed(2).replace(".", ",") + "W")
+console.log("Potência no R4 = ", (R4 * (i1 * i1)).toFixed(2).replace(".", ",") + "W")
+console.log("Potência no R5 = ", (R5 * (i2 * i2)).toFixed(2).replace(".", ",") + "W")
+console.log("Potência no R6 = ", (R6 * (i2 * i2)).toFixed(2).replace(".", ",") + "W")
 
 // potência nos geradores
 // P = U*I
 console.log("")
-console.log("Potência no gerador 1 = ", (volt1 * (i1 * i1)).toFixed(2) + "W")
-console.log("Potência no gerador 2 = ", (volt2 * (i2 * i2)).toFixed(2) + "W")
+console.log("Potência no gerador 1 = ", (volt1 * (i1 * i1)).toFixed(2).replace(".", ",") + "W")
+console.log("Potência no gerador 2 = ", (volt2 * (i2 * i2)).toFixed(2).replace(".", ",") + "W")
 */
