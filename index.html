@@ -62,26 +62,38 @@
 
   <!-- seleção do calculo -->
   <div id="divImagens">
-    <a data-bs-toggle="modal" data-bs-target="#modalSeisResistores">
-      <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
-        title="Circuito com seis resistores" id="imgResistores" src="/img/resistores.png">
-    </a>
+    <div class="row">
+      <div class="col">
+        <a data-bs-toggle="modal" data-bs-target="#modalSeisResistores" onclick="resetSeisResistores()">
+          <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
+            title="Circuito com seis resistores" id="imgResistores" src="/img/resistores.png">
+        </a>
+      </div>
 
-    <a data-bs-toggle="modal" data-bs-target="#modalMembros">
-      <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
-        title="Circuito com retificador em ponte" id="imgPonte" src="/img/retificador-ponte.png">
-    </a>
+      <div class="col">
+        <a data-bs-toggle="modal" data-bs-target="#modalMembros">
+          <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
+            title="Circuito com retificador em ponte" id="imgPonte" src="/img/retificador-ponte.png">
+        </a>
+      </div>
+    </div>
 
-    <a data-bs-toggle="modal" data-bs-target="#modalMembros">
-      <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
-        title="Circuito com retificador em meia onda" id="imgMeiaOnda" src="/img/retificador-meia-onda.png">
-    </a>
+    <div class="row">
+      <div class="col">
+        <a data-bs-toggle="modal" data-bs-target="#modalMembros">
+          <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
+            title="Circuito com retificador em meia onda" id="imgMeiaOnda" src="/img/retificador-meia-onda.png">
+        </a>
+      </div>
 
-    <a data-bs-toggle="modal" data-bs-target="#modalMembros">
-      <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
-        title="Circuito com retificador em onda completa " id="imgOndaCompleta"
-        src="/img/retificador-onda-completa-center-tape.png">
-    </a>
+      <div class="col">
+        <a data-bs-toggle="modal" data-bs-target="#modalMembros">
+          <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
+            title="Circuito com retificador em onda completa " id="imgOndaCompleta"
+            src="/img/retificador-onda-completa-center-tape.png">
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- modal circuito seis resistores -->
@@ -112,29 +124,29 @@
             </div>
             <div class="row">
               <div class="col">
-                <label for="resistor1" class="form-label">Resistor 1 (V)</label>
+                <label for="resistor1" class="form-label">Resistor 1 (Ω)</label>
                 <input type="number" inputmode="numeric" class="form-control" id="resistor1">
               </div>
               <div class="col">
-                <label for="resistor2" class="form-label">Resistor 2 (V)</label>
+                <label for="resistor2" class="form-label">Resistor 2 (Ω)</label>
                 <input type="number" inputmode="numeric" class="form-control" id="resistor2">
               </div>
               <div class="col">
-                <label for="resistor3" class="form-label">Resistor 3 (V)</label>
+                <label for="resistor3" class="form-label">Resistor 3 (Ω)</label>
                 <input type="number" inputmode="numeric" class="form-control" id="resistor3">
               </div>
             </div>
             <div class="row">
               <div class="col">
-                <label for="resistor4" class="form-label">Resistor 4 (V)</label>
+                <label for="resistor4" class="form-label">Resistor 4 (Ω)</label>
                 <input type="number" inputmode="numeric" class="form-control" id="resistor4">
               </div>
               <div class="col">
-                <label for="resistor5" class="form-label">Resistor 5 (V)</label>
+                <label for="resistor5" class="form-label">Resistor 5 (Ω)</label>
                 <input type="number" inputmode="numeric" class="form-control" id="resistor5">
               </div>
               <div class="col">
-                <label for="resistor6" class="form-label">Resistor 6 (V)</label>
+                <label for="resistor6" class="form-label">Resistor 6 (Ω)</label>
                 <input type="number" inputmode="numeric" class="form-control" id="resistor6">
               </div>
             </div>
@@ -142,13 +154,14 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" data-bs-target="#modalResultadoSeisResistores" data-bs-toggle="modal"
-            data-bs-dismiss="modal">Calcular</button>
+            data-bs-dismiss="modal" onclick="calcularSeisResistores()" id="btnCalcularSeisResistores"
+            disabled>Calcular</button>
         </div>
       </div>
     </div>
   </div>
-  <div class="modal fade" id="modalResultadoSeisResistores" aria-hidden="true" aria-labelledby="modalResultadoSeisResistoresLabel"
-    tabindex="-1">
+  <div class="modal fade" id="modalResultadoSeisResistores" aria-hidden="true"
+    aria-labelledby="modalResultadoSeisResistoresLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
@@ -199,12 +212,50 @@
                 <span id="correnteR6"></span>
               </div>
             </div>
+            <div class="row">
+              <div class="col">
+                <p>Potência no R1: </p>
+                <span id="potenciaR1"></span>
+              </div>
+              <div class="col">
+                <p>Potência no R2: </p>
+                <span id="potenciaR2"></span>
+              </div>
+              <div class="col">
+                <p>Potência no R3: </p>
+                <span id="potenciaR3"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p>Potência no R4: </p>
+                <span id="potenciaR4"></span>
+              </div>
+              <div class="col">
+                <p>Potência no R5: </p>
+                <span id="potenciaR5"></span>
+              </div>
+              <div class="col">
+                <p>Potência no R6: </p>
+                <span id="potenciaR6"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p>Potência no Gerador 1: </p>
+                <span id="potenciaGerador1"></span>
+              </div>
+              <div class="col">
+                <p>Potência no Gerador 2: </p>
+                <span id="potenciaGerador2"></span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
           <button class="btn btn-primary" data-bs-target="#modalSeisResistores" data-bs-toggle="modal"
-            data-bs-dismiss="modal">Refazer o cálculo</button>
+            data-bs-dismiss="modal" onclick="resetSeisResistores()">Refazer o cálculo</button>
         </div>
       </div>
     </div>
@@ -215,7 +266,7 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
-  <script src="script.js"></script>
+  <script src="calculos/sistemaCom6Resistores.js"></script>
 </body>
 
 </html>
