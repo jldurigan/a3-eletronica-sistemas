@@ -60,47 +60,154 @@
     </div>
   </div>
 
-  <!-- seleção de calculo
-  <div>
-    <select id="selectCalculo" class="form-select" aria-label="Default select example">
-      <option value="default">Selecione o circuito a ser calculado</option>
-      <option value="RetificadorPonte">Circuito com retificador em ponte</option>
-      <option value="RetificadorOndaCompleta">Circuito com retificador de onda completa com center tape</option>
-      <option value="RetificadorMeiaOnda">Circuito com retificador de meia onda</option>
-      <option value="RetificadorSeisResistores">Sistema com 6 resistores</option>
-    </select>
-  </div> -->
-
   <!-- seleção do calculo -->
   <div id="divImagens">
-    <a data-bs-toggle="modal" data-bs-target="#modalMembros">
+    <a data-bs-toggle="modal" data-bs-target="#modalSeisResistores">
       <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
         title="Circuito com seis resistores" id="imgResistores" src="/img/resistores.png">
     </a>
 
     <a data-bs-toggle="modal" data-bs-target="#modalMembros">
       <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
-      title="Circuito com retificador em ponte" id="imgPonte" src="/img/retificador-ponte.png">
+        title="Circuito com retificador em ponte" id="imgPonte" src="/img/retificador-ponte.png">
     </a>
 
     <a data-bs-toggle="modal" data-bs-target="#modalMembros">
       <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
-      title="Circuito com retificador em meia onda" id="imgMeiaOnda" src="/img/retificador-meia-onda.png">
+        title="Circuito com retificador em meia onda" id="imgMeiaOnda" src="/img/retificador-meia-onda.png">
     </a>
 
     <a data-bs-toggle="modal" data-bs-target="#modalMembros">
       <img class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
-      title="Circuito com retificador em onda completa " id="imgOndaCompleta" src="/img/retificador-onda-completa-center-tape.png">
+        title="Circuito com retificador em onda completa " id="imgOndaCompleta"
+        src="/img/retificador-onda-completa-center-tape.png">
     </a>
   </div>
 
-  <div id="divFormCalculo">
-    <form>
-      <div class="mb-3">
-        <label for="voltagem" class="form-label">Voltagem (V)</label>
-        <input type="number" inputmode="numeric" class="form-control" id="voltagem">
+  <!-- modal circuito seis resistores -->
+  <div class="modal fade" id="modalSeisResistores" aria-hidden="true" aria-labelledby="modalSeisResistoresLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalSeisResistoresLabel">Circuito com seis resistores</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 position-sticky top-0 start-50 translate-middle-x">
+                <img class="img-fluid" src="/img/resistores.png">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="voltagem1" class="form-label">Voltagem 1 (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="voltagem1">
+              </div>
+              <div class="col">
+                <label for="voltagem2" class="form-label">Voltagem 2 (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="voltagem2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="resistor1" class="form-label">Resistor 1 (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor1">
+              </div>
+              <div class="col">
+                <label for="resistor2" class="form-label">Resistor 2 (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor2">
+              </div>
+              <div class="col">
+                <label for="resistor3" class="form-label">Resistor 3 (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor3">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="resistor4" class="form-label">Resistor 4 (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor4">
+              </div>
+              <div class="col">
+                <label for="resistor5" class="form-label">Resistor 5 (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor5">
+              </div>
+              <div class="col">
+                <label for="resistor6" class="form-label">Resistor 6 (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor6">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#modalResultadoSeisResistores" data-bs-toggle="modal"
+            data-bs-dismiss="modal">Calcular</button>
+        </div>
       </div>
-    </form>
+    </div>
+  </div>
+  <div class="modal fade" id="modalResultadoSeisResistores" aria-hidden="true" aria-labelledby="modalResultadoSeisResistoresLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalResultadoSeisResistoresLabel">Resultados</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p>I1: </p>
+                <span id="correnteI1"></span>
+              </div>
+              <div class="col">
+                <p>I2: </p>
+                <span id="correnteI2"></span>
+              </div>
+              <div class="col">
+                <p>I3: </p>
+                <span id="correnteI3"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p>Corrente no R1: </p>
+                <span id="correnteR1"></span>
+              </div>
+              <div class="col">
+                <p>Corrente no R2: </p>
+                <span id="correnteR2"></span>
+              </div>
+              <div class="col">
+                <p>Corrente no R3: </p>
+                <span id="correnteR3"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p>Corrente no R4: </p>
+                <span id="correnteR4"></span>
+              </div>
+              <div class="col">
+                <p>Corrente no R5: </p>
+                <span id="correnteR5"></span>
+              </div>
+              <div class="col">
+                <p>Corrente no R6: </p>
+                <span id="correnteR6"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button class="btn btn-primary" data-bs-target="#modalSeisResistores" data-bs-toggle="modal"
+            data-bs-dismiss="modal">Refazer o cálculo</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- scripts -->

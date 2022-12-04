@@ -66,6 +66,9 @@ let i3 = (i1 + i2)
 
 
 //apresentação do resultado das correntes
+function carregarResultadoSeisResistores(){
+
+}
 console.log("i1 = ", i1.toFixed(2)+ "A")
 console.log("i2 = ", i2.toFixed(2)+ "A")
 console.log("i3 = ", i3.toFixed(2)+ "A")
