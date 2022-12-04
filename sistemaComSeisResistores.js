@@ -1,5 +1,7 @@
 //capturando elementos necessario para a função
-var botao_calcular = document.body.querySelector("#btnCalcularSeisResistores");
+var botao_calcular_resistores = document.body.querySelector("#btnCalcularSeisResistores");
+var inputsResistores = document.querySelectorAll("#modalSeisResistores input");
+
 var inputR1 = document.getElementById("resistor1");
 var inputR2 = document.getElementById("resistor2");
 var inputR3 = document.getElementById("resistor3");
@@ -9,8 +11,6 @@ var inputR6 = document.getElementById("resistor6");
 
 var inputV1 = document.getElementById("voltagem1");
 var inputV2 = document.getElementById("voltagem2");
-
-var inputs = document.querySelectorAll("#modalSeisResistores input");
 
 //capturando elementos para apresentação do resultado
 var spanCorrenteI1 = document.getElementById("correnteI1");
@@ -35,8 +35,8 @@ var spanPotenciaGerador1 = document.getElementById("potenciaGerador1");
 var spanPotenciaGerador2 = document.getElementById("potenciaGerador2");
 
 //controlando disponibilidade do botão conforme o preenchimento do formulário
-for (var i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("input", function () {
+for (var i = 0; i < inputsResistores.length; i++) {
+    inputsResistores[i].addEventListener("input", function () {
         if (inputR1.value.length >= 1
             && inputR2.value.length >= 1
             && inputR3.value.length >= 1
@@ -45,9 +45,9 @@ for (var i = 0; i < inputs.length; i++) {
             && inputR6.value.length >= 1
             && inputV1.value.length >= 1
             && inputV2.value.length >= 1)
-            botao_calcular.disabled = false
+            botao_calcular_resistores.disabled = false
         else
-            botao_calcular.disabled = true;
+            botao_calcular_resistores.disabled = true;
     });
 }
 
@@ -61,6 +61,8 @@ function resetSeisResistores() {
 
     inputV1.value = "";
     inputV2.value = "";
+
+    botao_calcular_resistores.disabled = true;
 }
 
 //Sistema com 6 resistores
