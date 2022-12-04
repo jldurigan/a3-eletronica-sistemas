@@ -51,100 +51,90 @@ for (var i = 0; i < inputs.length; i++) {
     });
 }
 
-function resetSeisResistores(){
-    inputR1.value="";
-    inputR2.value="";
-    inputR3.value="";
-    inputR4.value="";
-    inputR5.value="";
-    inputR6.value="";
+function resetSeisResistores() {
+    inputR1.value = "";
+    inputR2.value = "";
+    inputR3.value = "";
+    inputR4.value = "";
+    inputR5.value = "";
+    inputR6.value = "";
 
-    inputV1.value="";
-    inputV2.value="";
+    inputV1.value = "";
+    inputV2.value = "";
 }
 
 //Sistema com 6 resistores
-
-let R1 = 0
-let R2 = 0
-let R3 = 0
-let R4 = 0
-let R5 = 0
-let R6 = 0
-let volt1 = 0
-let volt2 = 0
-
-//array para os cálculos
-let soma_equacoes = []
-
-//todas as variáveis envolvidas na primeira equação do sistema
-// 1 - todas que multiplicam i1
-let malha_um_i1 = R1 + R4 + R3 + R2
-// 2 - todos que multiplicam i2
-let malha_um_i2 = R2
-//junção da parte 1 e parte 2 da equação 1 + a voltagem envolvida (volt1)
-let equacao_i1 = [malha_um_i1, malha_um_i2, volt1]
-// 1 - todas que multiplicam i1 
-let malha_dois_i1 = R2
-// 2 - todos que multiplicam i2
-let malha_dois_i2 = R5 + R6 + R2
-
-//junção da parte 1 e parte 2 da equação 2 + a voltagem envolvida (volt1)
-let equacao_i2 = [malha_dois_i1, malha_dois_i2, volt2]
-
-
-function calcular_i1() { //calculando i1
-    let t2m1 = -equacao_i1[1] //  -1x --> como i3 é i2 + i2 é necessário deixar um negativo
-    let t2m2 = equacao_i2[1]
-
-
-    for (let i = 0; i < equacao_i1.length; i++) {
-        equacao_i1[i] = equacao_i1[i] * t2m2
-    }
-    //for i, termo in enumerate(equacao_i1): //multiplicando a equação 1 pelo segundo termo da equeação dois
-    //equacao_i1[i] = termo * t2m2
-
-    for (let i = 0; i < equacao_i2.length; i++) {
-        equacao_i2[i] = equacao_i2[i] * t2m1
-    }
-    //for i, termo in enumerate(equacao_i2):
-    //equacao_i2[i] = termo * t2m1 //multiplicando a equação 2 pelo segundo termo da equação 1
-
-    for (let i = 0; i < equacao_i1.length; i++) {
-        let soma = equacao_i1[i] + equacao_i2[i]
-        soma_equacoes.push(soma)
-    }
-    //for i, termo in enumerate(equacao_i1):
-    //soma = equacao_i1[i] + equacao_i2[i]
-    //soma_equacoes.insert(len(soma_equacoes), soma)
-
-    return soma_equacoes[2] / soma_equacoes[0] //resultado de i1 após o corte de i2
-}
-
-function calcular_i2(i1) { //aplicando o resultado de i1 para descobrir i2
-    return ((equacao_i1[2] - (equacao_i1[0] * i1)) / equacao_i1[1])
-}
-
-let i1 = calcular_i1()
-let i2 = calcular_i2(i1)
-let i3 = (i1 + i2)
-
 function calcularSeisResistores() {
-    R1 = parseFloat(inputR1.value);
-    R2 = parseFloat(inputR2.value);
-    R3 = parseFloat(inputR3.value);
-    R4 = parseFloat(inputR4.value);
-    R5 = parseFloat(inputR5.value);
-    R6 = parseFloat(inputR6.value);
+    let R1 = parseFloat(inputR1.value);
+    let R2 = parseFloat(inputR2.value);
+    let R3 = parseFloat(inputR3.value);
+    let R4 = parseFloat(inputR4.value);
+    let R5 = parseFloat(inputR5.value);
+    let R6 = parseFloat(inputR6.value);
 
-    volt1 = parseFloat(inputV1.value);
-    volt2 = parseFloat(inputV2.value);
+    let volt1 = parseFloat(inputV1.value);
+    let volt2 = parseFloat(inputV2.value);
 
-    carregarResultadoSeisResistores();
+    //array para os cálculos
+    let soma_equacoes = []
+
+    //todas as variáveis envolvidas na primeira equação do sistema
+    // 1 - todas que multiplicam i1
+    let malha_um_i1 = R1 + R4 + R3 + R2
+    // 2 - todos que multiplicam i2
+    let malha_um_i2 = R2
+    //junção da parte 1 e parte 2 da equação 1 + a voltagem envolvida (volt1)
+    let equacao_i1 = [malha_um_i1, malha_um_i2, volt1]
+    // 1 - todas que multiplicam i1 
+    let malha_dois_i1 = R2
+    // 2 - todos que multiplicam i2
+    let malha_dois_i2 = R5 + R6 + R2
+
+    //junção da parte 1 e parte 2 da equação 2 + a voltagem envolvida (volt1)
+    let equacao_i2 = [malha_dois_i1, malha_dois_i2, volt2]
+
+
+    function calcular_i1() { //calculando i1
+        let t2m1 = -equacao_i1[1] //  -1x --> como i3 é i2 + i2 é necessário deixar um negativo
+        let t2m2 = equacao_i2[1]
+
+
+        for (let i = 0; i < equacao_i1.length; i++) {
+            equacao_i1[i] = equacao_i1[i] * t2m2
+        }
+        //for i, termo in enumerate(equacao_i1): //multiplicando a equação 1 pelo segundo termo da equeação dois
+        //equacao_i1[i] = termo * t2m2
+
+        for (let i = 0; i < equacao_i2.length; i++) {
+            equacao_i2[i] = equacao_i2[i] * t2m1
+        }
+        //for i, termo in enumerate(equacao_i2):
+        //equacao_i2[i] = termo * t2m1 //multiplicando a equação 2 pelo segundo termo da equação 1
+
+        for (let i = 0; i < equacao_i1.length; i++) {
+            let soma = equacao_i1[i] + equacao_i2[i]
+            soma_equacoes.push(soma)
+        }
+        //for i, termo in enumerate(equacao_i1):
+        //soma = equacao_i1[i] + equacao_i2[i]
+        //soma_equacoes.insert(len(soma_equacoes), soma)
+
+        return soma_equacoes[2] / soma_equacoes[0] //resultado de i1 após o corte de i2
+    }
+
+    function calcular_i2(i1) { //aplicando o resultado de i1 para descobrir i2
+        return ((equacao_i1[2] - (equacao_i1[0] * i1)) / equacao_i1[1])
+    }
+
+    let i1 = calcular_i1()
+    let i2 = calcular_i2(i1)
+    let i3 = (i1 + i2)
+
+    carregarResultadoSeisResistores(i1, i2, i3, R1, R2, R3, R4, R5, R6, volt1, volt2);
 }
 
 //apresentação do resultado das correntes
-function carregarResultadoSeisResistores() {
+function carregarResultadoSeisResistores(i1, i2, i3, R1, R2, R3, R4, R5, R6, volt1, volt2) {
     spanCorrenteI1.textContent = i1.toFixed(2) + "A";
     spanCorrenteI2.textContent = i2.toFixed(2) + "A";
     spanCorrenteI3.textContent = i3.toFixed(2) + "A";
@@ -166,29 +156,29 @@ function carregarResultadoSeisResistores() {
     spanPotenciaGerador1.textContent = (volt1 * (i1 * i1)).toFixed(2) + "W";
     spanPotenciaGerador2.textContent = (volt2 * (i2 * i2)).toFixed(2) + "W";
 }
-console.log("i1 = ", i1.toFixed(2) + "A")
-console.log("i2 = ", i2.toFixed(2) + "A")
-console.log("i3 = ", i3.toFixed(2) + "A")
+// console.log("i1 = ", i1.toFixed(2) + "A")
+// console.log("i2 = ", i2.toFixed(2) + "A")
+// console.log("i3 = ", i3.toFixed(2) + "A")
 
-//corrente em cada resistor
-console.log("Corrente no R1 = ", i1.toFixed(2) + "A")
-console.log("Corrente no R2 = ", i3.toFixed(2) + "A")
-console.log("Corrente no R3 = ", i1.toFixed(2) + "A")
-console.log("Corrente no R4 = ", i1.toFixed(2) + "A")
-console.log("Corrente no R5 = ", i2.toFixed(2) + "A")
-console.log("Corrente no R6 = ", i2.toFixed(2) + "A")
+// //corrente em cada resistor
+// console.log("Corrente no R1 = ", i1.toFixed(2) + "A")
+// console.log("Corrente no R2 = ", i3.toFixed(2) + "A")
+// console.log("Corrente no R3 = ", i1.toFixed(2) + "A")
+// console.log("Corrente no R4 = ", i1.toFixed(2) + "A")
+// console.log("Corrente no R5 = ", i2.toFixed(2) + "A")
+// console.log("Corrente no R6 = ", i2.toFixed(2) + "A")
 
-// potência em cada resistor
-// P = U.I^2
-console.log("Potência no R1 = ", (R1 * (i1 * i1)).toFixed(2) + "W")
-console.log("Potência no R2 = ", (R2 * (i3 * i3)).toFixed(2) + "W")
-console.log("Potência no R3 = ", (R3 * (i1 * i1)).toFixed(2) + "W")
-console.log("Potência no R4 = ", (R4 * (i1 * i1)).toFixed(2) + "W")
-console.log("Potência no R5 = ", (R5 * (i2 * i2)).toFixed(2) + "W")
-console.log("Potência no R6 = ", (R6 * (i2 * i2)).toFixed(2) + "W")
+// // potência em cada resistor
+// // P = U.I^2
+// console.log("Potência no R1 = ", (R1 * (i1 * i1)).toFixed(2) + "W")
+// console.log("Potência no R2 = ", (R2 * (i3 * i3)).toFixed(2) + "W")
+// console.log("Potência no R3 = ", (R3 * (i1 * i1)).toFixed(2) + "W")
+// console.log("Potência no R4 = ", (R4 * (i1 * i1)).toFixed(2) + "W")
+// console.log("Potência no R5 = ", (R5 * (i2 * i2)).toFixed(2) + "W")
+// console.log("Potência no R6 = ", (R6 * (i2 * i2)).toFixed(2) + "W")
 
-// potência nos geradores
-// P = U*I
-console.log("")
-console.log("Potência no gerador 1 = ", (volt1 * (i1 * i1)).toFixed(2) + "W")
-console.log("Potência no gerador 2 = ", (volt2 * (i2 * i2)).toFixed(2) + "W")
+// // potência nos geradores
+// // P = U*I
+// console.log("")
+// console.log("Potência no gerador 1 = ", (volt1 * (i1 * i1)).toFixed(2) + "W")
+// console.log("Potência no gerador 2 = ", (volt2 * (i2 * i2)).toFixed(2) + "W")
