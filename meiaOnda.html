@@ -16,7 +16,7 @@
     <header id="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Circuitos Elétricos</a>
+                <a class="navbar-brand" href="index.html">Circuitos Elétricos</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,59 @@
     </header>
 
 
-    <h1>Deu Bom eu acho!</h1>
+    <div id="imgSeisResistores">
+        <img id="imagemSistema" src="/img/retificador-meia-onda_.png">
+    </div>
+    <div id="divForm">
+        <form action="/pagina-processa-dados-do-form" method="post">
+            <div id="FormsSeisResistores">
+                <input type="number" id="voltagem" placeholder="Voltagem 1" style="border-radius: 10px" />
+            </div>
+            <div id="FormsSeisResistores">
+                <input type="number" id="frequencia" placeholder="Frequência 1" style="border-radius: 10px" />
+            </div>
+            <div id="FormsSeisResistores">
+                <input type="number" id="capacitor" placeholder="Capacitor (em uF)" style="border-radius: 10px" />
+            </div>
+            <div id="FormsSeisResistores">
+                <input type="number" id="resistencia" placeholder="Resistência (em ohms)" style="border-radius: 10px" />
+            </div>
+            <div id="FormsSeisResistores">
+                <input type="number" id="n1" placeholder="N1" style="border-radius: 10px" />
+            </div>
+            <div id="FormsSeisResistores">
+                <input type="number" id="n2" placeholder="N2" style="border-radius: 10px" />
+            </div>
+
+        </form>
+        <div id = "divBotoes">
+            <button id="BotaoCalcular" value="false" type="button" class="btn btn-success"
+                data-bs-toggle="button">Calcular</button>
+            <button id="BotaoReset" value="false" type="button" class="btn btn-success"
+                data-bs-toggle="button">Limpar</button>
+        </div>
+    </div>
+
+
+    <div id="divRes">
+        <div id="tensaoV2">
+            <label>Tensão eficaz no V2 = </label>
+        </div>
+        <div id="tensaoPicoV2">
+            <label>Tensão de pico do V2 =</label>
+        </div>
+        <div id="tensaoPicoCapacitor">
+            <label>Tensão de pico no capacitor =</label>
+        </div>
+        <div id="tensaoRipple">
+            <label>Tensão de Ripple =</label>
+        </div>
+        <div id="tensaoMediaCarga">
+            <label>Tensão média na carga =</label>
+        </div>
+    </div>
+
+    <script src="/calculos/retificadorMeiaOnda.js"></script>
 </body>
 
 </html>
