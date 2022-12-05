@@ -70,7 +70,7 @@ function resetCircuitos() {
     inputN1.value = "";
     inputN2.value = "";
 
-    botao_calcular_resistores.disabled = true;
+    botao_calcular.disabled = true;
 }
 
 
