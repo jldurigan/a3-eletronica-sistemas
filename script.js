@@ -103,17 +103,17 @@ function calcularCircuito() {
 
     switch (circuitoSelecionado) {
         case 'retificadorPonte':
-            spanPicoCapacitor.textContent = picoCapacitorPonte() + "v";
+            spanPicoCapacitor.textContent = picoCapacitorPonte().toFixed(2) + "v";
             spanTensaoRipple.textContent = ripplePonte() + "v";
             spanTensaoMediaCarga.textContent = tensaoMediaPonte() + "v";
             break;
         case 'retificadorMeiaOnda':
-            spanPicoCapacitor.textContent = picoCapacitorMeiaOnda() + "v";
+            spanPicoCapacitor.textContent = picoCapacitorMeiaOnda().toFixed(2) + "v";
             spanTensaoRipple.textContent = rippleMeiaOnda() + "v";
             spanTensaoMediaCarga.textContent = tensaoMediaMeiaOnda() + "v";
             break;
         case 'centerTape':
-            spanPicoCapacitor.textContent = picoCapacitorCenterTape() + "v";
+            spanPicoCapacitor.textContent = picoCapacitorCenterTape().toFixed(2) + "v";
             spanTensaoRipple.textContent = rippleCenterTape() + "v";
             spanTensaoMediaCarga.textContent = tensaoMediaCenterTape() + "v";
             break;
