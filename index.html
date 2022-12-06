@@ -12,41 +12,337 @@
 </head>
 
 <body>
-  <header id="header"></header>
+  <!-- menu superior -->
+  <header id="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Circuitos Elétricos</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
 
-  <div data-role="content" id="conteudo">
+            <li class="nav-item">
+              <a class="nav-link active" data-bs-toggle="modal" data-bs-target="#modalMembros" href="">Membros</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- modal membros -->
+  <div class="modal fade" id="modalMembros" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Membros</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Gabriel Chagas Nunes 8191604831</p>
+          <p>João Lucas Apolinário Durigan 821132203</p>
+          <p>Milton de Sousa 819163062</p>
+          <p>Paulo Henrique Neves 820276641</p>
+          <p>Stephanie Caroline Nunes Paulino 821132171</p>
+          <p>Cecília Trindade Nakamura 820120229</p>
+          <p>Aline Alves de souza 820142169</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <footer id="footer"></footer>
+  <!-- seleção do calculo -->
+  <div id="divImagens">
+    <div class="row">
+      <div class="col">
+        <a data-bs-toggle="modal" data-bs-target="#modalSeisResistores" onclick="resetSeisResistores()">
+          <img class="btn btn-outline-secondary img-fluid" data-bs-toggle="tooltip" data-bs-placement="right"
+            title="Circuito com seis resistores" id="imgResistores" src="/img/resistores.png">
+        </a>
+      </div>
 
-  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script>
-    $(function () {
-      $("#header").load("header.html");
-      $("#footer").load("footer.html");
-      $("#conteudo").load("pagina-inicial.html");
-    });
-  </script>
+      <div class="col">
+        <a data-bs-toggle="modal" data-bs-target="#modalCircuitos" onclick="abrirModalCircuitos('retificadorPonte')">
+          <img class="btn btn-outline-secondary img-fluid" data-bs-toggle="tooltip" data-bs-placement="right"
+            title="Circuito com retificador em ponte" id="imgPonte" src="/img/retificador-ponte.png">
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <a data-bs-toggle="modal" data-bs-target="#modalCircuitos" onclick="abrirModalCircuitos('retificadorMeiaOnda')">
+          <img class="btn btn-outline-secondary img-fluid" data-bs-toggle="tooltip" data-bs-placement="right"
+            title="Circuito com retificador em meia onda" id="imgMeiaOnda" src="/img/retificador-meia-onda.png">
+        </a>
+      </div>
+
+      <div class="col">
+        <a data-bs-toggle="modal" data-bs-target="#modalCircuitos" onclick="abrirModalCircuitos('centerTape')">
+          <img class="btn btn-outline-secondary img-fluid" data-bs-toggle="tooltip" data-bs-placement="right"
+            title="Circuito com retificador em onda completa " id="imgOndaCompleta"
+            src="/img/retificador-onda-completa-center-tape.png">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal circuito seis resistores -->
+  <div class="modal fade" id="modalSeisResistores" aria-hidden="true" aria-labelledby="modalSeisResistoresLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg  modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalSeisResistoresLabel">Circuito com seis resistores</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 position-sticky top-0 start-50 translate-middle-x">
+                <img class="img-fluid" src="/img/resistores.png">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="voltagem1" class="form-label">Voltagem 1 (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="voltagem1">
+              </div>
+              <div class="col">
+                <label for="voltagem2" class="form-label">Voltagem 2 (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="voltagem2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="resistor1" class="form-label">Resistor 1 (Ω)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor1">
+              </div>
+              <div class="col">
+                <label for="resistor2" class="form-label">Resistor 2 (Ω)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor2">
+              </div>
+              <div class="col">
+                <label for="resistor3" class="form-label">Resistor 3 (Ω)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor3">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="resistor4" class="form-label">Resistor 4 (Ω)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor4">
+              </div>
+              <div class="col">
+                <label for="resistor5" class="form-label">Resistor 5 (Ω)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor5">
+              </div>
+              <div class="col">
+                <label for="resistor6" class="form-label">Resistor 6 (Ω)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistor6">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#modalResultadoSeisResistores" data-bs-toggle="modal"
+            data-bs-dismiss="modal" onclick="calcularSeisResistores()" id="btnCalcularSeisResistores"
+            disabled>Calcular</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalResultadoSeisResistores" aria-hidden="true"
+    aria-labelledby="modalResultadoSeisResistoresLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-md  modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalResultadoSeisResistoresLabel">Resultados</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>I1: <span id="correnteI1"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>I2: <span id="correnteI2"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>I3: <span id="correnteI3"></span></p>                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success" >
+                <p>Corrente no R1: <span id="correnteR1"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Corrente no R2: <span id="correnteR2"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Corrente no R3: <span id="correnteR3"></span></p>                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Corrente no R4: <span id="correnteR4"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Corrente no R5: <span id="correnteR5"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Corrente no R6: <span id="correnteR6"></span></p>                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Potência no R1: <span id="potenciaR1"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Potência no R2: <span id="potenciaR2"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Potência no R3: <span id="potenciaR3"></span></p>                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Potência no R4: <span id="potenciaR4"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Potência no R5: <span id="potenciaR5"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Potência no R6: <span id="potenciaR6"></span></p>                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Potência no Gerador 1: <span id="potenciaGerador1"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Potência no Gerador 2: <span id="potenciaGerador2"></span></p>                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button class="btn btn-primary" data-bs-target="#modalSeisResistores" data-bs-toggle="modal"
+            data-bs-dismiss="modal" onclick="resetSeisResistores()">Refazer o cálculo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal generica -->
+  <div class="modal fade" id="modalCircuitos" aria-hidden="true" aria-labelledby="modalCircuitosLabel" tabindex="-1"
+    name="">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalCircuitosLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 position-sticky top-0 start-50 translate-middle-x">
+                <img class="img-fluid" id="imagemCircuito" src="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="voltagem" class="form-label">Voltagem (V)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="voltagem">
+              </div>
+              <div class="col">
+                <label for="voltagem2" class="form-label">Frequência (Hz)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="frequencia">
+              </div>
+              <div class="col">
+                <label for="resistor1" class="form-label">Capacitor (uF)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="capacitor">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="resistor2" class="form-label">Resistência (Ω)</label>
+                <input type="number" inputmode="numeric" class="form-control" id="resistencia">
+              </div>
+              <div class="col">
+                <label for="resistor3" class="form-label">N1</label>
+                <input type="number" inputmode="numeric" class="form-control" id="N1">
+              </div>
+              <div class="col">
+                <label for="resistor4" class="form-label">N2</label>
+                <input type="number" inputmode="numeric" class="form-control" id="N2">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#modalResultadoCircuitos" data-bs-toggle="modal"
+            data-bs-dismiss="modal" onclick="calcularCircuito()" id="btnCalcularCircuito" disabled>Calcular</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalResultadoCircuitos" aria-hidden="true" aria-labelledby="modalResultadoCircuitosLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg  modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalResultadoCircuitosLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Tensão Eficaz no V2: <span id="eficazV2"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Tensão de pico do V2: <span id="picoV2"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Tensão de pico no capacitor: <span id="picoCapacitor"></span></p>                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Tensão de Ripple: <span id="tensaoRipple"></span></p>                
+              </div>
+              <div class="col-md-100 badge text-dark fs-3 text border rounded border-success">
+                <p>Tensão média na carga: <span id="tensaoMediaCarga"></span></p>                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button class="btn btn-primary" data-bs-target="#modalCircuitos" data-bs-toggle="modal"
+            data-bs-dismiss="modal" onclick="resetCircuitos()">Refazer o cálculo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
-  <div>
-    <select id="selectCalculo" class="form-select" aria-label="Default select example">
-      <option value="default">Selecione o circuito a ser calculado</option>
-      <option value="RetificadorPonte">Circuito com retificador em ponte</option>
-      <option value="RetificadorOndaCompleta">Circuito com retificador de onda completa com center tape</option>
-      <option value="RetificadorMeiaOnda">Circuito com retificador de meia onda</option>
-      <option value="RetificadorSeisResistores">Sistema com 6 resistores</option>
-    </select>
-  </div>
-
-  <div id="divImagens">
-    <img id="imgResistores" src="/img/resistores.png">
-    <img id="imgPonte" src="/img/retificador-ponte.png">
-    <img id="imgMeiaOnda" src="/img/retificador-meia-onda.png">
-    <img id="imgOndaCompleta" src="/img/retificador-onda-completa-center-tape.png">
-  </div>
+  <script src="sistemaComSeisResistores.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
